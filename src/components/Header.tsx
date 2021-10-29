@@ -1,13 +1,17 @@
 import React from 'react'
 import { HeaderProps } from './../interfaces'
 
-const Header = ({ profileImage, heading, subheading }: HeaderProps) =>
-    <div style={styles.main}>
-        {profileImage && <img style={styles.img} src={profileImage} />}
-        <span style={styles.text}>
-            <p style={styles.heading}>{heading}</p>
-            <p style={styles.subheading}>{subheading}</p>
-        </span>
+const Header = ({ profileImage, heading, subheading, link }: HeaderProps) =>
+    <div style={styles.main} className="header-storie">
+        <a href={link} target="_blank">
+            {profileImage && <img style={styles.img} src={profileImage} />}
+        </a>
+        <a href={link} target="_blank">
+            <span style={styles.text}>
+                <p style={styles.heading}>{heading}</p>
+                <p style={styles.subheading}>{subheading}</p>
+            </span>
+        </a>
     </div>
 
 const styles = {

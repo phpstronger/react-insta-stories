@@ -104,7 +104,8 @@ export interface Story {
 export interface Header {
     heading: string;
     subheading: string;
-    profileImage: string
+    profileImage: string;
+    link: string
 }
 
 export interface SeeMoreProps {
@@ -118,7 +119,8 @@ export interface SeeMoreProps {
 export interface HeaderProps {
     profileImage: string;
     heading: string;
-    subheading: string
+    subheading: string;
+    link: string
 }
 
 export interface ProgressProps {

@@ -15,6 +15,7 @@ const withHeader: React.FC<{ story: Story, globalHeader: Function }> = ({ story,
                                 heading={story.header.heading}
                                 subheading={story.header.subheading}
                                 profileImage={story.header.profileImage}
+                                link={story.header.link}
                             />
                         )
                 ) : null}
