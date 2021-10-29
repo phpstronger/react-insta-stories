@@ -17,45 +17,45 @@ export const renderer: Renderer = ({ story, action, isPaused, config, messageHan
         ...(storyStyles || {})
     }
 
-    // let vid = React.useRef<HTMLVideoElement>(null);
+    let vid = React.useRef<HTMLVideoElement>(null);
 
-    // React.useEffect(() => {
-    //     if (vid.current) {
-    //         if (isPaused) {
-    //             vid.current.pause();
-    //         } else {
-    //             vid.current.play().catch(() => { });
-    //         }
-    //     }
-    // }, [isPaused]);
+    React.useEffect(() => {
+        if (vid.current) {
+            if (isPaused) {
+                vid.current.pause();
+            } else {
+                vid.current.play().catch(() => { });
+            }
+        }
+    }, [isPaused]);
 
-    // const onWaiting = () => {
-    //     action("pause", true);
-    // }
+    const onWaiting = () => {
+        action("pause", true);
+    }
 
-    // const onPlaying = () => {
-    //     action("play", true);
-    // }
+    const onPlaying = () => {
+        action("play", true);
+    }
 
-    // const videoLoaded = () => {
-    //     messageHandler('UPDATE_VIDEO_DURATION', { duration: vid.current.duration });
-    //     setLoaded(true);
-    //     vid.current.play().then(() => {
-    //         action('play');
-    //     }).catch(() => {
-    //         setMuted(true);
-    //         vid.current.play().finally(() => {
-    //             action('play');
-    //         })
-    //     });
-    // }
+    const videoLoaded = () => {
+        messageHandler('UPDATE_VIDEO_DURATION', { duration: vid.current.duration });
+        setLoaded(true);
+        vid.current.play().then(() => {
+            action('play');
+        }).catch(() => {
+            setMuted(true);
+            vid.current.play().finally(() => {
+                action('play');
+            })
+        });
+    }
 
     console.log(story);
 
     return <WithHeader story={story} globalHeader={config.header}>
         <WithSeeMore story={story} action={action}>
             <div style={styles.videoContainer}>
-                {/* <video
+                <video
                     ref={vid}
                     style={computedStyles}
                     src={story.url}
@@ -67,12 +67,12 @@ export const renderer: Renderer = ({ story, action, isPaused, config, messageHan
                     muted={muted}
                     autoPlay
                     webkit-playsinline="true"
-                /> */}
+                />
 
-                <ReactPlayer
+                {/* <ReactPlayer
                     style={computedStyles}
                     url={story.url}
-                />
+                /> */}
                 {!loaded && (
                     <div
                         style={{

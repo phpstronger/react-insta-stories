@@ -2,11 +2,11 @@ import React from 'react'
 import { HeaderProps } from './../interfaces'
 
 const Header = ({ profileImage, heading, subheading, link }: HeaderProps) =>
-    <div style={styles.main} className="header-storie">
-        <a href={link} target="_blank">
+    <div style={styles.main}>
+        <a href={link} target="_blank" style={styles.a}>
             {profileImage && <img style={styles.img} src={profileImage} />}
         </a>
-        <a href={link} target="_blank">
+        <a href={link} target="_blank" style={styles.a}>
             <span style={styles.text}>
                 <p style={styles.heading}>{heading}</p>
                 <p style={styles.subheading}>{subheading}</p>
@@ -15,9 +15,14 @@ const Header = ({ profileImage, heading, subheading, link }: HeaderProps) =>
     </div>
 
 const styles = {
+    a: {
+        color: 'rgba(255, 255, 255, 1)',
+        textDecoration: 'none',
+    },
     main: {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        zIndex: 999999999999,
     },
     img: {
         width: 40,
