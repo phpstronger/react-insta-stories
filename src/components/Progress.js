@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
-import { ProgressProps, ProgressContext } from './../interfaces'
 import ProgressWrapper from './ProgressWrapper'
-import ProgressCtx from './../context/Progress'
+import ProgressCtx from '../context/Progress'
 
-export default (props: ProgressProps) => {
-    const { bufferAction, pause } = useContext<ProgressContext>(ProgressCtx)
+export default (props) => {
+    const { bufferAction, pause } = useContext(ProgressCtx)
 
     const getProgressStyle = ({ active }) => {
         switch (active) {
@@ -28,7 +27,7 @@ export default (props: ProgressProps) => {
     )
 }
 
-const styles: any = {
+const styles = {
     inner: {
         background: '#fff',
         height: '100%',

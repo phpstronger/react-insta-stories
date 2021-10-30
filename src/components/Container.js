@@ -1,22 +1,21 @@
 import React, { useContext, useState, useRef, useEffect } from 'react'
-import GlobalContext from './../context/Global'
-import StoriesContext from './../context/Stories'
-import ProgressContext from './../context/Progress'
+import GlobalContext from '../context/Global'
+import StoriesContext from '../context/Stories'
+import ProgressContext from '../context/Progress'
 import Story from './Story'
 import ProgressArray from './ProgressArray'
-import { GlobalCtx, StoriesContext as StoriesContextInterface } from './../interfaces'
 
 export default function () {
-    const [currentId, setCurrentId] = useState<number>(0)
-    const [pause, setPause] = useState<boolean>(true)
-    const [bufferAction, setBufferAction] = useState<boolean>(true)
-    const [videoDuration, setVideoDuration] = useState<number>(0)
+    const [currentId, setCurrentId] = useState(0)
+    const [pause, setPause] = useState(true)
+    const [bufferAction, setBufferAction] = useState(true)
+    const [videoDuration, setVideoDuration] = useState(0)
 
-    let mousedownId = useRef<any>();
-    let isMounted = useRef<boolean>(true);
+    let mousedownId = useRef();
+    let isMounted = useRef(true);
 
-    const { width, height, loop, currentIndex, isPaused, keyboardNavigation, storyContainerStyles = {} } = useContext<GlobalCtx>(GlobalContext);
-    const { stories } = useContext<StoriesContextInterface>(StoriesContext);
+    const { width, height, loop, currentIndex, isPaused, keyboardNavigation, storyContainerStyles = {} } = useContext(GlobalContext);
+    const { stories } = useContext(StoriesContext);
 
     useEffect(() => {
         if (typeof currentIndex === 'number') {
@@ -51,7 +50,7 @@ export default function () {
         }
     }, []);
 
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
         if (e.key === 'ArrowLeft') {
             previous()
         }
@@ -60,7 +59,7 @@ export default function () {
         }
     }
 
-    const toggleState = (action: string, bufferAction?: boolean) => {
+    const toggleState = (action, bufferAction) => {
         setPause(action === 'pause')
         setBufferAction(!!bufferAction)
     }
@@ -95,14 +94,14 @@ export default function () {
         })
     }
 
-    const debouncePause = (e: React.MouseEvent | React.TouchEvent) => {
+    const debouncePause = (e) => {
         e.preventDefault()
         mousedownId.current = setTimeout(() => {
             toggleState('pause')
         }, 200)
     }
 
-    const mouseUp = (type: string) => (e: React.MouseEvent | React.TouchEvent) => {
+    const mouseUp = (type) => (e) => {
         e.preventDefault()
         mousedownId.current && clearTimeout(mousedownId.current)
         if (pause) {
@@ -112,7 +111,7 @@ export default function () {
         }
     }
 
-    const getVideoDuration = (duration: number) => {
+    const getVideoDuration = (duration) => {
         setVideoDuration(duration * 1000)
     }
 

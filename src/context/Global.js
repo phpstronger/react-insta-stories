@@ -1,5 +1,4 @@
 import React from 'react';
-import { GlobalCtx } from '../interfaces';
 
 export const initialContext = {
 	defaultInterval: 4000,
@@ -7,6 +6,6 @@ export const initialContext = {
 	height: 640,
 };
 
-const GlobalContext = React.createContext<GlobalCtx>(initialContext);
+const GlobalContext = React.createContext(initialContext);
 
 export default GlobalContext;

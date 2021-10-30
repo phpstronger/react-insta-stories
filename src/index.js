@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { ReactInstaStoriesProps, GlobalCtx, Story, Tester, Renderer } from './interfaces'
 import Container from './components/Container'
 import GlobalContext from './context/Global'
 import StoriesContext from './context/Stories';
@@ -8,9 +7,9 @@ import { renderers as defaultRenderers } from './renderers/index';
 import withHeader from './renderers/wrappers/withHeader'
 import withSeeMore from './renderers/wrappers/withSeeMore'
 
-const ReactInstaStories = function (props: ReactInstaStoriesProps) {
+const ReactInstaStories = function (props) {
     let renderers = props.renderers ? props.renderers.concat(defaultRenderers) : defaultRenderers;
-    let context: GlobalCtx = {
+    let context = {
         width: props.width,
         height: props.height,
         loader: props.loader,
@@ -26,7 +25,7 @@ const ReactInstaStories = function (props: ReactInstaStoriesProps) {
         onAllStoriesEnd: props.onAllStoriesEnd,
         keyboardNavigation: props.keyboardNavigation
     }
-    const [stories, setStories] = useState<{ stories: Story[] }>({ stories: generateStories(props.stories, renderers) });
+    const [stories, setStories] = useState < { stories } > ({ stories: generateStories(props.stories, renderers) });
     useEffect(() => {
         setStories({ stories: generateStories(props.stories, renderers) });
     }, [props.stories, props.renderers]);
@@ -38,9 +37,9 @@ const ReactInstaStories = function (props: ReactInstaStoriesProps) {
     </GlobalContext.Provider>
 }
 
-const generateStories = (stories: Story[], renderers: { renderer: Renderer, tester: Tester }[]) => {
+const generateStories = (stories, renderers) => {
     return stories.map(s => {
-        let story: Story = {};
+        let story = {};
 
         if (typeof s === 'string') {
             story.url = s;

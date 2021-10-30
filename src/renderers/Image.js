@@ -1,10 +1,9 @@
 import * as React from 'react';
 import Spinner from '../components/Spinner';
-import { Renderer, Tester } from './../interfaces';
 import WithHeader from './wrappers/withHeader';
 import WithSeeMore from './wrappers/withSeeMore';
 
-export const renderer: Renderer = ({ story, action, isPaused, config }) => {
+export const renderer = ({ story, action, isPaused, config }) => {
     const [loaded, setLoaded] = React.useState(false);
     const { width, height, loader, storyStyles } = config;
     let computedStyles = {
@@ -59,7 +58,7 @@ const styles = {
     }
 };
 
-export const tester: Tester = (story) => {
+export const tester = (story) => {
     return {
         condition: !story.content && (!story.type || story.type === 'image'),
         priority: 2

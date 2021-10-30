@@ -1,12 +1,7 @@
-import React, { ComponentType, useState } from 'react';
-import { Action, SeeMoreProps, Story } from '../../interfaces';
-import SeeMore from "./../../components/SeeMore";
+import React, { useState } from 'react';
+import SeeMore from "../../components/SeeMore";
 
-const withSeeMore: React.FC<{
-    story: Story,
-    action: Action,
-    customCollapsed?: SeeMoreProps["customCollapsed"]
-}> = ({ story, action, customCollapsed, children }) => {
+const withSeeMore = ({ story, action, customCollapsed, children }) => {
     const [showMore, setShowMore] = useState(false);
     const toggleMore = (show) => {
         action(show ? 'pause' : 'play');

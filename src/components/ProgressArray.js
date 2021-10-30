@@ -1,15 +1,14 @@
 import React, { useContext, useState, useEffect, useRef } from 'react'
 import Progress from './Progress'
-import { ProgressContext, GlobalCtx, StoriesContext as StoriesContextInterface } from './../interfaces'
-import ProgressCtx from './../context/Progress'
-import GlobalContext from './../context/Global'
-import StoriesContext from './../context/Stories'
+import ProgressCtx from '../context/Progress'
+import GlobalContext from '../context/Global'
+import StoriesContext from '../context/Stories'
 
 export default () => {
-    const [count, setCount] = useState<number>(0)
-    const { currentId, next, videoDuration, pause } = useContext<ProgressContext>(ProgressCtx)
-    const { defaultInterval, onStoryEnd, onStoryStart, onAllStoriesEnd } = useContext<GlobalCtx>(GlobalContext);
-    const { stories } = useContext<StoriesContextInterface>(StoriesContext);
+    const [count, setCount] = useState(0)
+    const { currentId, next, videoDuration, pause } = useContext(ProgressCtx)
+    const { defaultInterval, onStoryEnd, onStoryStart, onAllStoriesEnd } = useContext(GlobalContext);
+    const { stories } = useContext(StoriesContext);
 
     useEffect(() => {
         setCount(0)
@@ -24,12 +23,12 @@ export default () => {
         }
     }, [currentId, pause])
 
-    let animationFrameId = useRef<number>()
+    let animationFrameId = useRef()
 
     let countCopy = count;
     const incrementCount = () => {
         if (countCopy === 0) storyStartCallback()
-        setCount((count: number) => {
+        setCount((count) => {
             const interval = getCurrentInterval()
             countCopy = count + (100 / ((interval / 1000) * 60))
             return count + (100 / ((interval / 1000) * 60))

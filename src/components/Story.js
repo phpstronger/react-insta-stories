@@ -1,19 +1,18 @@
 import React, { useContext } from "react";
-import { StoryProps, GlobalCtx } from "./../interfaces";
 import GlobalContext from "./../context/Global";
 
-const Story = (props: StoryProps) => {
-	const globalContext = useContext<GlobalCtx>(
+const Story = (props) => {
+	const globalContext = useContext(
 		GlobalContext
 	);
 
 	const { width, height, loader, header, storyStyles } = globalContext;
 
-	const rendererMessageHandler = (type: string, data: any) => {
+	const rendererMessageHandler = (type, data) => {
 		switch (type) {
 			case 'UPDATE_VIDEO_DURATION':
 				props.getVideoDuration(data.duration);
-				return { ack: 'OK' as 'OK' }
+				return { ack: 'OK' }
 		}
 	}
 

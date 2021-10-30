@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Renderer, Tester } from './../interfaces';
 
-export const renderer: Renderer = (props) => {
+export const renderer = (props) => {
     React.useEffect(() => {
         props.action('play');
     }, [props.story])
@@ -9,7 +8,7 @@ export const renderer: Renderer = (props) => {
     return <Content {...props} />
 }
 
-export const tester: Tester = (story) => {
+export const tester = (story) => {
     return {
         condition: !!story.content,
         priority: 2

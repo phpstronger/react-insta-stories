@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.tsx',
+    entry: './src/index.js',
     devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
@@ -9,7 +9,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
+                test: /\.js?$/,
                 use: [
                     {
                         loader: 'babel-loader'

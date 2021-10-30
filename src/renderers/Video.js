@@ -1,13 +1,11 @@
 import * as React from 'react';
-// @ts-ignore
 import ReactPlayer from 'react-player';
 
 import Spinner from '../components/Spinner';
-import { Renderer, Tester } from './../interfaces';
 import WithHeader from './wrappers/withHeader';
 import WithSeeMore from './wrappers/withSeeMore';
 
-export const renderer: Renderer = ({ story, action, isPaused, config, messageHandler }) => {
+export const renderer = ({ story, action, isPaused, config, messageHandler }) => {
     const [loaded, setLoaded] = React.useState(false);
     const [muted, setMuted] = React.useState(false);
     const { width, height, loader, storyStyles } = config;
@@ -17,7 +15,7 @@ export const renderer: Renderer = ({ story, action, isPaused, config, messageHan
         ...(storyStyles || {})
     }
 
-    let vid = React.useRef<HTMLVideoElement>(null);
+    let vid = React.useRef(null);
 
     React.useEffect(() => {
         if (vid.current) {
@@ -69,10 +67,10 @@ export const renderer: Renderer = ({ story, action, isPaused, config, messageHan
                     webkit-playsinline="true"
                 />
 
-                {/* <ReactPlayer
+                <ReactPlayer
                     style={computedStyles}
                     url={story.url}
-                /> */}
+                />
                 {!loaded && (
                     <div
                         style={{
@@ -111,7 +109,7 @@ const styles = {
     }
 };
 
-export const tester: Tester = (story) => {
+export const tester = (story) => {
     return {
         condition: story.type === 'video',
         priority: 2

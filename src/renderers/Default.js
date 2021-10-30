@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Renderer, Tester } from './../interfaces';
 
-export const renderer: Renderer = ({ story, action }) => {
+export const renderer = ({ story, action }) => {
     React.useEffect(() => {
         action('play');
     }, [story])
@@ -25,7 +24,7 @@ const styles = {
     }
 };
 
-export const tester: Tester = () => {
+export const tester = () => {
     return {
         condition: true,
         priority: 1

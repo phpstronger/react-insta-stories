@@ -1,13 +1,11 @@
 import React, { useEffect, useContext } from 'react'
 import GlobalContext from './../context/Global'
-import { GlobalCtx } from './../interfaces'
-import { SeeMoreProps } from './../interfaces'
 
-export default function seeMore(props: SeeMoreProps) {
+export default function seeMore(props) {
     const SeeMoreContent = props.seeMoreContent;
     const CustomCollapsed = props.customCollapsed;
 
-    const { keyboardNavigation } = useContext<GlobalCtx>(GlobalContext);
+    const { keyboardNavigation } = useContext(GlobalContext);
 
     useEffect(() => {
         const isClient = (typeof window !== 'undefined' && window.document);
@@ -19,7 +17,7 @@ export default function seeMore(props: SeeMoreProps) {
         }
     }, [keyboardNavigation])
 
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
         if (e.key === 'ArrowUp') {
             e.preventDefault()
             props.toggleMore(true)
@@ -48,7 +46,7 @@ export default function seeMore(props: SeeMoreProps) {
     )
 }
 
-const styles: any = {
+const styles = {
     seeMore: {
         height: "10vh",
         background: "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2))",

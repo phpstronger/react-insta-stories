@@ -1,7 +1,6 @@
 import React from 'react'
-import { HeaderProps } from './../interfaces'
 
-const Header = ({ profileImage, heading, subheading, link }: HeaderProps) =>
+const Header = ({ profileImage, heading, subheading, link }) =>
     <div style={styles.main}>
         <a href={link} target="_blank" style={styles.a}>
             {profileImage && <img style={styles.img} src={profileImage} />}

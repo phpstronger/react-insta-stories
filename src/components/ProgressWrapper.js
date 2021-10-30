@@ -1,7 +1,6 @@
 import React from 'react'
-import { ProgressWrapperProps } from './../interfaces'
 
-const ProgressWrapper = (props: ProgressWrapperProps) => (
+const ProgressWrapper = (props) => (
     <div style={{ ...styles.progress, ...getProgressWrapperStyle(props) }}>
         {props.children}
     </div>
