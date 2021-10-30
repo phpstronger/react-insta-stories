@@ -31,7 +31,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: __dirname + '/src/index.js'
+            template: __dirname + '/src/index.ejs'
         }),
         new MiniCssExtractPlugin(),
         new webpack.HotModuleReplacementPlugin()

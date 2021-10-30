@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactPlayer from 'react-player';
+// import ReactPlayer from 'react-player';
 
 import Spinner from '../components/Spinner';
 import WithHeader from './wrappers/withHeader';
@@ -67,10 +67,10 @@ export const renderer = ({ story, action, isPaused, config, messageHandler }) =>
                     webkit-playsinline="true"
                 />
 
-                <ReactPlayer
+                {/* <ReactPlayer
                     style={computedStyles}
                     url={story.url}
-                />
+                /> */}
                 {!loaded && (
                     <div
                         style={{
